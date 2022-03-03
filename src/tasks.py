@@ -2,3 +2,13 @@ class Task:
     def __init__(self, name, duration):
         self.name = name
         self.duration = duration
+
+    def get_preferred_option(self, task_1):
+        preferred_task_list = {
+            #on right is task, on left is it's correspoding preferred task
+            "Cook Dinner":"Wash Dishes",
+            "Clean Windows": "Cook Dinner",
+            "Wash Dishes":"Clean Windows"
+        }
+        preferred_task = preferred_task_list[task_1.name]
+        return preferred_task
