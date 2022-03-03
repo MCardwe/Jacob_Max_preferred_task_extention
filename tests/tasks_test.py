@@ -1,5 +1,6 @@
 import unittest
 from src.tasks import Task
+from src.task_decider import get_preferred_option
 
 class TestTask(unittest.TestCase):
     def setUp(self):
@@ -14,10 +15,10 @@ class TestTask(unittest.TestCase):
         self.assertEqual(10, self.wash_dishes.duration)
 
     def test_preferred_task_1(self):
-        self.assertEqual("Wash Dishes", self.wash_dishes.get_preferred_option(self.wash_dishes, self.cook_dinner))
+        self.assertEqual("Wash Dishes", get_preferred_option(self.wash_dishes, self.cook_dinner))
 
     def test_preferred_task_2(self):
-        self.assertEqual("Clean Windows", self.clean_windows.get_preferred_option(self.clean_windows,self.wash_dishes))
+        self.assertEqual("Clean Windows", get_preferred_option(self.clean_windows,self.wash_dishes))
 
-    def test_preferred_task_not_work(self):
-        self.assertEqual("Cook Dinner", self.clean_windows.get_preferred_option(self.clean_windows,self.wash_dishes))
+    # def test_preferred_task_not_work(self):
+    #     self.assertEqual("Cook Dinner", get_preferred_option(self.clean_windows,self.wash_dishes))
