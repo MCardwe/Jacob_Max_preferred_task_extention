@@ -14,7 +14,10 @@ class TestTask(unittest.TestCase):
         self.assertEqual(10, self.wash_dishes.duration)
 
     def test_preferred_task_1(self):
-        self.assertEqual("Clean Windows", self.wash_dishes.get_preferred_option(self.wash_dishes))
+        self.assertEqual("Wash Dishes", self.wash_dishes.get_preferred_option(self.wash_dishes, self.cook_dinner))
 
     def test_preferred_task_2(self):
-        self.assertEqual("Cook Dinner", self.clean_windows.get_preferred_option(self.clean_windows))
+        self.assertEqual("Clean Windows", self.clean_windows.get_preferred_option(self.clean_windows,self.wash_dishes))
+
+    def test_preferred_task_not_work(self):
+        self.assertEqual("Cook Dinner", self.clean_windows.get_preferred_option(self.clean_windows,self.wash_dishes))
